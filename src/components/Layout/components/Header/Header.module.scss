@@ -1,4 +1,9 @@
 .wrapper {
+    --search-border-radius: 92px;
+    --search-btn-height: 46px;
+    --search-btn-height-spacer: 9px;
+    --search-btn-width: 52px;
+
     width: 100%;
     height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -7,6 +12,87 @@
 }
 
 .inner {
+    display: flex;
+    justify-content: space-between;
     height: 100%;
     width: var(--default-layout-width);
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    position: relative;
+    height: var(--search-btn-height);
+    width: 500px;
+    background-color: var(--search-background-color);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid transparent;
+
+    input {
+        height: 100%;
+        caret-color: var(--primary-color);
+        color: var(--black);
+        font-size: 1.6rem;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        flex: 1;
+    }
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+
+    &:focus-within .search-btn {
+        color: #4c4e57;
+    }
+
+    &:hover .search-btn {
+        background-color: #e4e4e6;
+        color: #4c4e57;
+    }
+}
+
+.clear,
+.loading {
+    position: absolute;
+    color: #a7a7ab;
+    font-size: 1.5rem;
+    top: 50%;
+    right: calc(var(--search-btn-width) + 17px);
+    transform: translateY(-50%);
+}
+
+.search-btn {
+    position: relative;
+    height: 100%;
+    width: var(--search-btn-width);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 2rem;
+    color: #a7a7ab;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #e4e4e6;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: var(--search-btn-height-spacer);
+        right: var(--search-btn-width);
+        width: 1px;
+        background-color: rgba(22, 24, 35, 0.12);
+        height: calc(var(--search-btn-height) - var(--search-btn-height-spacer) * 2);
+    }
+}
+
+.actions {
 }
