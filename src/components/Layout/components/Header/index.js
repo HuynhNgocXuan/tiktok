@@ -3,11 +3,12 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
+    faEllipsisVertical,
+    faGlobe,
+    faKeyboard,
+    faLightbulb,
     faMagnifyingGlass,
     faPlus,
-    faPlusSquare,
-    faSign,
-    faSignIn,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
@@ -17,8 +18,35 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
+import { faCircleQuestion, faMoon } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'Trung tâm Nhà sáng tạo LIVE',
+        to: '/live',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGlobe} />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt trên bàn phím',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Chế độ tối',
+    },
+];
 
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
@@ -26,7 +54,7 @@ function Header() {
     useEffect(() => {
         setTimeout(() => {
             setSearchResults([]);
-        }, 500);
+        }, 0);
     }, []);
     return (
         <header className={cx('wrapper')}>
@@ -67,6 +95,11 @@ function Header() {
                         Tải lên
                     </Button>
                     <Button primary>Đăng nhập</Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>

@@ -40,7 +40,7 @@ function Button({
         Component = Link;
         props.to = to;
     } else if (href) {
-        Component = 'a';
+        Component = 'a'; 
         props.href = href;
     }
 
