@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');;
 :root {
     --primary-color: #fe2c55;
     --black: #000;
@@ -40,4 +40,23 @@ input,
 a[href] {
     text-decoration: none;
     color: var(--text-color);
+}
+
+body {
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 0.92);
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        border-radius: 8px;
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+        top: -8px;
+        color: rgba(84, 84, 84, 0.92);
+    }
 }
