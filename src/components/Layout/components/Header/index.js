@@ -2,23 +2,19 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faArrowLeft,
     faCircleXmark,
-    faCloudArrowUp,
     faCoins,
     faEllipsisVertical,
     faGear,
-    faGears,
     faGlobe,
     faKeyboard,
     faLightbulb,
-    faLongArrowAltUp,
-    faMagnifyingGlass,
     faPlus,
     faSignOut,
     faSpinner,
     faVideo,
 } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faCircleQuestion, faMoon, faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
@@ -29,15 +25,9 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import {
-    faArrowAltCircleDown,
-    faBookmark,
-    faCircleQuestion,
-    faEnvelope,
-    faMessage,
-    faMoon,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
+import Image from '~/components/Image';
+
+import { MailIcon, MessageIcon, SearchIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -196,7 +186,7 @@ function Header() {
                         </button>
                         <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <SearchIcon />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -204,15 +194,20 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faCloudArrowUp} />
-                            </button>
-                            <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button>
-                            <Tippy delay={[0, 200]} placement="bottom" content="Hộp thư">
+                            <Button text>
+                                <FontAwesomeIcon style={{ marginRight: 8 }} icon={faPlus} />
+                                Tải lên
+                            </Button>
+
+                            <Tippy delay={[0, 50]} placement="bottom" content="Tin nhắn">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faEnvelope} />
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 50]} placement="bottom" content="Hộp thư">
+                                <button className={cx('action-btn')}>
+                                    <MailIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -228,11 +223,12 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://th.bing.com/th/id/OIP.BY4DB8IiXumaa9v5Wiz0fgHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7"
+                                src="ahttps://th.bing.com/th/id/OIP.BY4DB8IiXumaa9v5Wiz0fgHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7"
                                 alt="Huỳnh Ngọc Xuân"
-                            ></img>
+                                // fallback="https://th.bing.com/th/id/OIP.nMRgVa3LJEhpNBo8CEQZswHaE7?w=276&h=184&c=7&r=0&o=5&dpr=1.6&pid=1.7"
+                            />
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
