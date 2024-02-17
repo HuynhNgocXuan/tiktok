@@ -1,44 +1,43 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleXmark,
-    faCoins,
-    faEllipsisVertical,
-    faGear,
-    faGlobe,
-    faKeyboard,
-    faLightbulb,
-    faPlus,
-    faSignOut,
-    faSpinner,
-    faVideo,
-} from '@fortawesome/free-solid-svg-icons';
-import { faBookmark, faCircleQuestion, faMoon, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 //
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 
-import { MailIcon, MessageIcon, SearchIcon } from '~/components/Icons';
+import {
+    CoinIcon,
+    CreativeIcon,
+    FavoriteIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MailIcon,
+    MessageIcon,
+    MoonIcon,
+    ProfileIcon,
+    QuestionIcon,
+    SettingIcon,
+    VideoIcon,
+} from '~/components/Icons';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
-
+ 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        icon: <CreativeIcon />,
         title: 'Trung tâm Nhà sáng tạo LIVE',
         to: '/live',
     },
     {
-        icon: <FontAwesomeIcon icon={faGlobe} />,
+        icon: <LanguageIcon />,
         title: 'Tiếng Việt',
         children: {
             title: 'Ngôn ngữ',
@@ -88,29 +87,22 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <QuestionIcon />,
         title: 'Phản hồi và trợ giúp',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Phím tắt trên bàn phím',
     },
     {
-        icon: <FontAwesomeIcon icon={faMoon} />,
+        icon: <MoonIcon />,
         title: 'Chế độ tối',
     },
 ];
 
 function Header() {
-    const [searchResults, setSearchResults] = useState([]);
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([]);
-        }, 0);
-    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -124,33 +116,33 @@ function Header() {
 
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <ProfileIcon />,
             title: 'Xem hồ sơ',
             to: '/@hnx',
         },
         {
-            icon: <FontAwesomeIcon icon={faBookmark} />,
+            icon: <FavoriteIcon />,
             title: 'Yêu thích',
             to: '/feedbac',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <CoinIcon />,
             title: 'Nhận xu',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faVideo} />,
+            icon: <VideoIcon />,
             title: 'LIVE Studio',
             to: '/studio',
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <SettingIcon />,
             title: 'Cài đặt',
             to: '/setting',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
+            icon: <LogoutIcon />,
             title: 'Đăng xuất',
             to: '/logout',
             separate: true,
@@ -163,33 +155,8 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchResults.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <p className={cx('search-title')}>Tài khoản</p>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Tìm kiếm" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <SearchIcon />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
@@ -201,13 +168,13 @@ function Header() {
 
                             <Tippy delay={[0, 50]} placement="bottom" content="Tin nhắn">
                                 <button className={cx('action-btn')}>
-                                    <MessageIcon />
+                                    <MessageIcon className={cx('message-icon')} />
                                 </button>
                             </Tippy>
 
                             <Tippy delay={[0, 50]} placement="bottom" content="Hộp thư">
                                 <button className={cx('action-btn')}>
-                                    <MailIcon />
+                                    <MailIcon className={cx('mail-icon')} />
                                 </button>
                             </Tippy>
                         </>
@@ -225,7 +192,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="ahttps://th.bing.com/th/id/OIP.BY4DB8IiXumaa9v5Wiz0fgHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7"
+                                src="https://th.bing.com/th/id/OIP.BY4DB8IiXumaa9v5Wiz0fgHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7"
                                 alt="Huỳnh Ngọc Xuân"
                                 // fallback="https://th.bing.com/th/id/OIP.nMRgVa3LJEhpNBo8CEQZswHaE7?w=276&h=184&c=7&r=0&o=5&dpr=1.6&pid=1.7"
                             />

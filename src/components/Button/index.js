@@ -51,7 +51,7 @@ function Button({
         large,
         small,
         disabled,
-        rounded,
+        rounded, 
         [className]: className,
     });
 
