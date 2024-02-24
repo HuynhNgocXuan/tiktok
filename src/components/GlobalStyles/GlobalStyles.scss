@@ -5,6 +5,8 @@
     --black: #000;
     --white: #fff;
     --text-color: #333;
+    --font-family: 'TikTokFont', sans-serif;
+
     --search-background-color: #f1f1f2;
 
     // default layout
@@ -25,7 +27,7 @@ html {
 body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
-    font-family: 'TikTokFont', sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     color: var(--text-color);
 }

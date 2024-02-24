@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +9,6 @@ import images from '~/assets/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
-
 import {
     CoinIcon,
     CreativeIcon,
@@ -27,9 +25,11 @@ import {
     VideoIcon,
 } from '~/components/Icons';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
+import configRoutes from '~/config/routes';
 
 const cx = classNames.bind(styles);
- 
+
 const MENU_ITEMS = [
     {
         icon: <CreativeIcon />,
@@ -152,9 +152,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={configRoutes.home} className={cx('logo-home')}>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
 
                 <Search />
 
@@ -175,6 +175,7 @@ function Header() {
                             <Tippy delay={[0, 50]} placement="bottom" content="Hộp thư">
                                 <button className={cx('action-btn')}>
                                     <MailIcon className={cx('mail-icon')} />
+                                    <span className={cx('badge')}>6</span>
                                 </button>
                             </Tippy>
                         </>

@@ -4,7 +4,6 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 //
-import * as request from '~/utils/request';
 import { SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -53,6 +52,15 @@ function Search() {
         inputRef.current.focus();
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -75,9 +83,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Tìm kiếm"
                     spellCheck={false}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (

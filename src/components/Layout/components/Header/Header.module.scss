@@ -20,12 +20,10 @@
     align-items: center;
 }
 
-.logo {
+.logo-home {
     display: flex;
-    align-items: center;
-    min-width: 300px;
+    margin-right: calc(300px - 118px);
 }
-
 
 // Actions
 
@@ -35,6 +33,7 @@
 }
 
 .action-btn {
+    position: relative;
     font-size: 2.4rem;
     margin-left: 16px;
     padding: 4px;
@@ -62,6 +61,23 @@
     width: 32px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.badge {
+    position: absolute;
+    top: -10%;
+    right: 0;
+    color: var(--white);
+    background-color: var(--primary-color);
+    min-width: 20px;
+    height: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2rem;
+    border-radius: 10px;
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
 }
 
 .message-icon {
