@@ -11,6 +11,10 @@
     padding: 8px 0;
 }
 
+.menu-body {
+    overflow-y: overlay;
+}
+
 // Menu items
 
 .menu-item {
@@ -36,6 +40,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .btn {

@@ -47,9 +47,9 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                                 title="Ngôn Ngữ"
                                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
                             />
-                        )}
-                        {renderItems()}
-                    </PopperWrapper>
+                        )} 
+                        <div className={cx('menu-body')}> {renderItems()}</div>
+                    </PopperWrapper> 
                 </div>
             )}
             onHide={() => setHistory((prev) => prev.slice(0, 1))}

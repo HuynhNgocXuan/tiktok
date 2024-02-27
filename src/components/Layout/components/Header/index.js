@@ -83,6 +83,47 @@ const MENU_ITEMS = [
                     code: 'In',
                     title: 'Bahasa Indonesia (Indonesia)',
                 },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'pi',
+                    title: 'Cebuano (Pilipinas)',
+                },
+                {
+                    code: 'Čes',
+                    title: 'Čeština (Česká republika)',
+                },
+                {
+                    code: '한',
+                    title: '한국어 (대한민국)',
+                },
+                {
+                    code: '简',
+                    title: '简体中文',
+                },
+                {
+                    code: 'Ne',
+                    title: 'Nederlands (Nederland)',
+                },
+                {
+                    code: 'Ma',
+                    title: 'Bahasa Melayu (Malaysia)',
+                },
+                {
+                    code: 'Itali',
+                    title: 'Italiano (Italia)',
+                },
+                {
+                    code: 'In',
+                    title: 'Bahasa Indonesia (Indonesia)',
+                },
             ],
         },
     },
