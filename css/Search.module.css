@@ -1,0 +1,95 @@
+.search-result,
+.search {
+  width: 500px;
+}
+
+.search {
+  position: relative;
+  height: var(--search-btn-height);
+  background-color: var(--search-background-color);
+  border-radius: var(--search-border-radius);
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid transparent;
+}
+.search input {
+  height: 100%;
+  caret-color: var(--primary-color);
+  color: var(--black);
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: var(--font-family);
+  background-color: transparent;
+  flex: 1;
+}
+.search input:not(:-moz-placeholder-shown) ~ .search-btn {
+  color: rgba(22, 24, 35, 0.75);
+}
+.search input:not(:placeholder-shown) ~ .search-btn {
+  color: rgba(22, 24, 35, 0.75);
+}
+.search:hover {
+  border-color: rgba(22, 24, 35, 0.2);
+}
+.search:focus-within .search-btn {
+  color: #4c4e57;
+}
+.search :hover ~ .search-btn {
+  background-color: #e4e4e6;
+  color: rgba(22, 24, 35, 0.75);
+}
+
+.search-title {
+  height: 30px;
+  padding: 5px 12px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(22, 24, 35, 0.5);
+  line-height: 1.8rem;
+}
+
+.clear,
+.loading {
+  position: absolute;
+  color: #a7a7ab;
+  font-size: 1.5rem;
+  right: calc(var(--search-btn-width) + 17px);
+  padding: 2px;
+}
+
+.loading {
+  animation: slew 1s linear infinite;
+}
+
+@keyframes slew {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.search-btn {
+  position: relative;
+  height: 100%;
+  width: var(--search-btn-width);
+  border-top-right-radius: var(--search-border-radius);
+  border-bottom-right-radius: var(--search-border-radius);
+  font-size: 2rem;
+  color: #a7a7ab;
+}
+.search-btn:hover {
+  cursor: pointer;
+  background-color: #e4e4e6;
+  color: rgba(22, 24, 35, 0.75);
+}
+.search-btn::before {
+  content: "";
+  position: absolute;
+  top: var(--search-btn-height-spacer);
+  right: var(--search-btn-width);
+  width: 1px;
+  background-color: rgba(22, 24, 35, 0.12);
+  height: calc(var(--search-btn-height) - var(--search-btn-height-spacer) * 2);
+}/*# sourceMappingURL=Search.module.css.map */
