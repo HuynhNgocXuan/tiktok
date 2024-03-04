@@ -15,6 +15,7 @@ import {
     UserFollowingIcon,
 } from '~/components/Icons';
 import Image from '~/components/Image';
+import SuggestAccounts from '~/components/SuggestAccounts';
 
 const cx = classNames.bind(styles);
 
@@ -68,6 +69,8 @@ function Sidebar() {
                     }
                 />
             </Menu>
+            <SuggestAccounts label="Tài khoản gợi ý" />
+            <SuggestAccounts label="Tài khoản theo dõi" />
         </aside>
     );
 }
