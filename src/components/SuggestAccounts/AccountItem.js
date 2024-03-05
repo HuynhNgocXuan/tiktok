@@ -1,30 +1,42 @@
 import classNames from 'classnames/bind';
-import styles from './SuggestAccounts.module.scss';
-import PropTypes from 'prop-types';
+import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import styles from './SuggestAccounts.module.scss';
+import AccountPreview from './AccountPreview';
 
 const cx = classNames.bind(styles);
 
 function AccountItem() {
+    const renderPreview = (attrs) => (
+        <div tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                <AccountPreview />
+            </PopperWrapper>
+        </div>
+    );
     return (
-        <div className={cx('item')}>
-            <img
-                className={cx('avatar')}
-                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/82f6a5847466b72a3700c1a34f8cfb91~c5_100x100.jpeg?biz_tag=tiktok_user.user_cover&lk3s=30310797&x-expires=1709625600&x-signature=NS%2BTErPXLpdQ0xqCRD4EqvkS0oQ%3D"
-                alt=""
-            />
-            <div className={cx('info')}>
-                <p className={cx('nickname')}>
-                    <strong>@ngocxuan</strong>
-                    <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
-                </p>
-                <p className={cx('name')}>Huỳnh Ngọc Xuân</p>
-            </div>
+        <div>
+            <Tippy offset={[50, 10]} placement="top-start" interactive delay={[800, 0]} render={renderPreview}>
+                <div className={cx('item')}>
+                    <img
+                        className={cx('avatar')}
+                        src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/eb375bdbe0dbdcafa6307c36494bde51.jpeg?lk3s=a5d48078&x-expires=1709798400&x-signature=PHyqOW0DG3xsJAKq49OQ3pMMfcc%3D"
+                        alt=""
+                    />
+                    <div className={cx('info')}>
+                        <p className={cx('nickname')}>
+                            <strong>@ngocxuan</strong>
+                            <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                        </p>
+                        <p className={cx('name')}>Huỳnh Ngọc Xuân</p>
+                    </div>
+                </div>
+            </Tippy>
         </div>
     );
 }
-
-AccountItem.propTypes = {};
 
 export default AccountItem;
