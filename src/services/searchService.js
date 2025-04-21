@@ -1,8 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-
 const search = async (q, type = 'less') => {
-    console.log('Q', q);
     try {
         const result = await httpRequest.get('users/search', {
             params: {

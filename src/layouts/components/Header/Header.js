@@ -232,7 +232,7 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <Image 
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://th.bing.com/th/id/OIP.BY4DB8IiXumaa9v5Wiz0fgHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.6&pid=1.7"
                                 alt="Huỳnh Ngọc Xuân"
